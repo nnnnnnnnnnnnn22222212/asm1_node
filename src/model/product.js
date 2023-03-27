@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const { Schema} = mongoose
-const Image = new Schema({
+const Images = new Schema({
     base_url: {
         type: String,
         required: true
@@ -67,7 +67,7 @@ const Product = new Schema({
         required: true
     },
     images: {
-        type: [Image],
+        type: [Images],
         required: true
     },
     brand:{

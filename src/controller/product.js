@@ -14,7 +14,7 @@ const Image = Joi.object({
 const Specification = Joi.object({
     name: Joi.string().required(),
     attributes: Joi.array().items(Joi.object({
-        code: Joi.string().required(),
+        code: Joi.number().required(),
         name: Joi.string().required(),
         value: Joi.string().required(),
     })).min(1).required()
@@ -24,7 +24,12 @@ const productSchema = Joi.object({
     price: Joi.number(),
     original_price: Joi.number().required(),
     description: Joi.string().required(),
-    image: Joi.array().items(Image).min(1).required(),
+    images: Joi.array().items(Image).required(),
+    brand: Joi.object({
+        id: Joi.number().required(),
+        name: Joi.string().required(),
+        slug: Joi.string().required()
+    }),
     specifications: Joi.array().items(Specification).min(1).required()
 })
 export const get = async (req, res)=>{
