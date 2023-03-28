@@ -3,10 +3,10 @@ import Joi from "joi"
 const Image = Joi.object({
     base_url: Joi.string().required(),
     is_gallery: Joi.boolean().required(),
-    lable: Joi.string(),
+    label: Joi.any(),
     large_url: Joi.string().required(),
     medium_url: Joi.string().required(),
-    position: Joi.string(),
+    position: Joi.any(),
     small_url: Joi.string().required(),
     thumbnail_url: Joi.string().required(),
 
@@ -14,7 +14,7 @@ const Image = Joi.object({
 const Specification = Joi.object({
     name: Joi.string().required(),
     attributes: Joi.array().items(Joi.object({
-        code: Joi.number().required(),
+        code: Joi.string().required(),
         name: Joi.string().required(),
         value: Joi.string().required(),
     })).min(1).required()
@@ -24,7 +24,7 @@ const productSchema = Joi.object({
     price: Joi.number(),
     original_price: Joi.number().required(),
     description: Joi.string().required(),
-    images: Joi.array().items(Image).required(),
+    images: Joi.array().items(Image).min(1).required(),
     brand: Joi.object({
         id: Joi.number().required(),
         name: Joi.string().required(),

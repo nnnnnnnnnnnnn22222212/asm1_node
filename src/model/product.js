@@ -29,7 +29,7 @@ const Images = new Schema({
 const Attributes = new Schema(
     {
         code: {
-            type: Number,
+            type: String,
             required: true
         },
         name:{
